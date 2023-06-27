@@ -140,7 +140,10 @@ class Beam:
         screen.blit(self.img, self.rct)
 
 
-class Score:
+class Score: 
+    """
+    スコアクラスを作りました。
+    """
     def __init__(self):
         self.font = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.color = (0, 0, 255)
@@ -206,6 +209,7 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
+
 
 
 if __name__ == "__main__":
