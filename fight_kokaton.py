@@ -140,6 +140,24 @@ class Beam:
         screen.blit(self.img, self.rct)
 
 
+class Score:
+    def __init__(self):
+        self.font = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
+        self.color = (0, 0, 255)
+        self.score = 0
+        self.image = self.font.render("Score", 0, self.color)
+        self.rect = self.image.get_rect()
+        self.rect.center = 100, HEIGHT-50
+
+    def score_up(self, add):
+        self.score += add
+
+    def update(self, screen: pg.Surface):
+        self.image = self.font.render("Score", 0, self.color)
+        screen.blit(self.image, self.rect)
+
+
+
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
@@ -148,6 +166,8 @@ def main():
     # bomb = Bomb((255, 0, 0), 10)
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     beam = None
+    score = Score()
+    score.update(screen)
 
     clock = pg.time.Clock()
     tmr = 0
